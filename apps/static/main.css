@@ -86,7 +86,7 @@ h2 {
 
 /*for the table*/
 .camel-table {
-    width: 80%;
+    width: auto;
     border-collapse: collapse;
     margin: 20px auto;
     font-size: 1em;
@@ -104,5 +104,5 @@ h2 {
 }
 
 .camel-table, .camel-table th, .camel-table td {
-    border: 1px solid black;
+    border: 1px solid rgb(0, 0, 0);
 }

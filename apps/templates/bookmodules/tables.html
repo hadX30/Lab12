@@ -35,7 +35,7 @@
 <table class="camel-table">
     <caption>Table 2: Amore complex sample table</caption>
     <tr>
-        <th rowspan="3"> <img src="{% static 'desert.jpg' %}" alt="Desert Image" class="table-image" > </th>
+        <th rowspan="5"> <img src="{% static 'desert.jpg' %}" alt="Desert Image" class="table-image" > </th>
         <th colspan="4" rowspan="2">Camelid comparison <br> approximate as of 6/2011 </br> </th>
     </tr>
     <tr>
@@ -47,9 +47,11 @@
         <td rowspan="2"><b>Spits?</b></td>
         <td rowspan="2"><b>Produces wool</b></td>
     </tr>
+   
     <tr>
     </tr>
-   
+    <tr>
+    </tr>
     <tr>
         <td><b>Dromedary</b></td>
         <td>1</td>
@@ -76,6 +78,27 @@
     </tr>
 </table>
 
+<style>
+    table,tr,td{
+    border: 1px solid;
+    border-collapse: collapse;
+    }
+    
+    </style>
+    
+    <table>
+      
+      
+         <tr>
+            <td>a2</td>
+            <td>a3</td>
+            <td>a4</td>
+         </tr>
+
+         <tr>
+            <td colspan=“3”>a1</td>
+          </tr>
+      </table>
 
 
 {% endblock content %}
