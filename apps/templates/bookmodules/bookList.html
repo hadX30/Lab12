@@ -71,4 +71,11 @@ td , tr{
 
 
 </table>
+
+{% for obj in books %}
+
+ID: {{obj.id}}, Title: {{obj.title}}
+    <hr>
+{% endfor %}
+
 {% endblock content %}
