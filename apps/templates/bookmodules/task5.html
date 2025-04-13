@@ -42,42 +42,38 @@ td , tr{
 
 {% block content %}
 
-<table class="table-book">
+<table class="Task 5">
+<!--   numOfbooks = Book.objects.count()
+    totalPrice = Sum('price',default=0)
+    avgPrice = Avg('price',default=0)
+    maxPrice = Max('price',default=0)
+    minPrice -->
 
   <tr>
-    <th><b>ID</b></th>
-    <th><b>Title</b></th>
-    <th><b>Author</b></th>
+    <td><b>Number of Books </b></td>
+    <td>{{Query.NumBooks}} </td>
   </tr>
-  {% for book in books %}
-    <tr>
-        <td>{{book.id}}</td>
-        <td>{{book.title}}</td>
-        <td>{{book.author}}</td> 
-        <td>{{book.price}}</td> 
-        <td>{{book.edition}}</td> 
-    </tr>
-
-  {% endfor %}
-   
- </tr>
   <tr>
-     <td>this is testing row1</td>
-     <td>this is testing row2</td>
-     <td>this is testing row3</td>
+    <td><b>Total Price </b></td>
+    <td>{{Query.total}} </td>
   </tr>
-
-
-
+  <tr>
+    <td><b>Average Price </b></td>
+    <td>{{Query.average}} </td>
+  </tr>
+  <tr>
+    <td><b>Max Price </b></td>
+    <td>{{Query.max}} </td>
+  </tr>
+  <tr>
+    <td><b>Min Price </b></td>
+    <td>{{Query.min}} </td>
+  </tr>
+ 
 
 
 
 </table>
 
-{% for obj in books %}
-
-ID: {{obj.id}}, Title: {{obj.title}}
-    <hr>
-{% endfor %}
 
 {% endblock content %}

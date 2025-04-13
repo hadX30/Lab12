@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students per City</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>Students per City</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>Number of Students</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for city in cities %}
+                <tr>
+                    <td>{{ city.city }}</td>
+                    <td>{{ city.student_count }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="2">No data available</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
