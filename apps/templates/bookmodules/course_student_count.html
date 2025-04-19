@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>عدد الطلاب المسجلين في كل مقرر</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color:rgb(209, 158, 208);
+        }
+    </style>
+</head>
+<body>
+    <h1>عدد الطلاب المسجلين في كل مقرر</h1>
+    <table>
+        <tr>
+            <th>المقرر</th>
+            <th>رمز المقرر</th>
+            <th>عدد الطلاب</th>
+        </tr>
+        {% for course in courses %}
+        <tr>
+            <td>{{ course.title }}</td>
+            <td>{{ course.code }}</td>
+            <td>{{ course.student_count }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

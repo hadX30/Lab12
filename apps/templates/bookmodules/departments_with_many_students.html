@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>الأقسام التي تحتوي على أكثر من طالبين</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color:rgb(209, 158, 208);
+        }
+    </style>
+</head>
+<body>
+    <h1>الأقسام التي تحتوي على أكثر من طالبين (مرتبة تنازليًا حسب عدد الطلاب)</h1>
+    <table>
+        <tr>
+            <th>القسم</th>
+            <th>عدد الطلاب</th>
+        </tr>
+        {% for dept in departments %}
+        <tr>
+            <td>{{ dept.name }}</td>
+            <td>{{ dept.student_count }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
