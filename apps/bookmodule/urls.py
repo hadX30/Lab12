@@ -33,5 +33,29 @@ urlpatterns = [
     path('lab10_part2/addbook2', views.addbook2, name="addbook2"),
     path('lab10_part2/editbook2/<int:bID>', views.editbook2, name="editbook2"),
     path('lab10_part2/deletebook2/<int:bID>', views.deletebook2, name="deletebook2"),
+    
+#___________________________________________LAB 11_____________________________________________________________
+    path('lab11_task1/list_students',views.list_students, name ="list_students"),
+    path('lab11_task1/add_student',views.add_student, name ="add_student"),
+    path('lab11_task1/edit_student/<int:sID>/',views.edit_student, name ="edit_student"),
+    path('lab11_task1/delete_student/<int:sID>/',views.delete_student, name ="delete_student"),
+    path('lab11_task2/list_students2',views.list_students2, name ="list_students2"),
+    path('lab11_task2/add_student2',views.add_student2, name ="add_student2"),
+    path('lab11_task2/edit_student2/<int:sID>/',views.edit_student2, name ="edit_student2"),
+    path('lab11_task2/delete_student2/<int:sID>/',views.delete_student2, name ="delete_student2"),
+    path('register_page/',views.register_page, name ="register_page"),
+    # path('add_document/', views.add_document, name='add_document'),
+    # path('list_documents/', views.list_documents, name='list_documents'),
+
+    
+    
+    
+    #-----------------------------Practice section-----------------
+    path('practise/index3', views.index3, name= "index3"),
+    path('practise/listproduct', views.listproduct, name= "listproduct"),
+    path('practise/viewproduct/<int:pID>', views.viewproduct, name= "viewproduct"),
+    path('practise/editproduct/<int:pID>', views.editproduct, name= "editproduct"), 
+    path('practise/delproduct/<int:pID>', views.delproduct, name= "delproduct"), 
+    #-----------------------------Practice section-----------------
 
 ]

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book List</title>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #666;
+            padding: 10px;
+        }
+        th {
+            background-color:rgb(209, 158, 208);
+        }
+        .actions a {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<h3>Updating book</h3>
+
+<form method = "POST">
+    {% csrf_token %}
+
+    <label for = "kind">kind</label>
+    <input type = "text" id = "kind" name ="kind" />
+    <br>
+    {% comment %} <label for = "company">company</label>
+    <input type = "text" id = "company" name ="company"  /> {% endcomment %}
+    <select name = "company_id">
+        <option selected >None</option>
+        {% for e in companys %}
+          <option value = "{{e.id}}">{{e.name}}</option>
+          {% endfor%}
+
+    </select>
+    <br>
+    <label for = "expire_year">expire year</label>
+    <input type = "text" id = "expire_year" name ="expire_year"  />
+    <br>
+   
+    <button type = "submit">Update product</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<style>
+    table, th, tr, td{
+        border: 1px solid black;
+        
+
+    }
+    th{
+        background-color: antiquewhite;
+    }
+  </style>
+
+<h1>Documents</h1>
+<a href="{% url 'add_document' %}">Upload New Document</a><br>
+</br>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>File</th>
+    </tr>
+    {% for doc in documents %}
+    <tr>
+        <td>{{ doc.title }}</td>
+        <td><a href="{{ doc.file.url }}" download>{{ doc.file }}</a></td>
+    </tr>
+    {% endfor %}
+
+</table>

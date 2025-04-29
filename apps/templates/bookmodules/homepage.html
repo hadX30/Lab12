@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Products Website</title>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #666;
+            padding: 10px;
+        }
+        th {
+            background-color:rgb(209, 158, 208);
+        }
+        .actions a {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<h1>Products Website</h1>
+<div>
+<h1 style="color: blue;">menus</h1> <!-- add inline css -->
+
+<a href="{% url 'listproduct' %}">Click Here to to see all the product</a>
+<hr>
+</div>
+<!-- This is a comment in HTML, not render in the bowser -->
+<h2>here should be a pic of the website logo</h2>
+<img src="{% static 'book1.jpg' %}" alt="Book1 img desc" width="200"
+    height="200">
+<hr>
+
+</body>
+</html>

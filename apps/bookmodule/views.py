@@ -1,9 +1,11 @@
 from django.shortcuts import render ,redirect
 from django.http import HttpResponse
-from .models import Book,department,student,card,course
+from .models import Book,department,card,course, product,company,student2,student1,address1,address2,register1
 from django.db.models import Count, Min, Max, Sum, Avg , Q
 from django import forms
-from .forms import BookForm
+from .forms import BookForm,StudentForm1,StudentForm2,registration1
+import os
+from django.core.files.storage import FileSystemStorage
 #import BookForm
 def index(request):
     name = request.GET.get("name") or "world!"
@@ -222,3 +224,141 @@ def deletebook2(request, bID):
    # if request.method == 'POST':
     obj.delete()
     return redirect('listbooks2')
+
+
+ #-----------------------------Practice section-----------------
+ 
+def index3(request):
+     
+     return render(request, 'bookmodules/homepage.html')
+ 
+def listproduct(request):
+    products = product.objects.all()
+    return render(request, 'bookmodules/listproduct.html', {'products': products})
+def viewproduct(request,pID):
+    pro = product.objects.get(id = pID)
+    return render(request, 'bookmodules/viewproduct.html', {'pro': pro})
+def editproduct(request,pID):
+    pro = product.objects.get(id = pID)
+    if request.method == 'POST':
+        
+        kind = request.POST.get('kind')
+        company_id = request.POST.get('company_id')
+        companyObj = company.objects.get(id = company_id)
+        expire_year = request.POST.get('expire_year')
+        
+        print(companyObj)
+        pro.kind = kind
+        pro.expire_year =expire_year
+        pro.company= companyObj
+        print(pro.kind)
+        print(pro.company)
+        pro.save()
+        return redirect('listproduct')
+        
+    companys = company.objects.all().order_by('name')
+    return render(request, 'bookmodules/editproduct.html', {'pro': pro, 'companys':companys})
+
+def delproduct(request,pID):
+    pro = product.objects.get(id = pID)
+    pro.delete()
+    return redirect('listproduct')
+ 
+ 
+  #-----------------------------Practice section-----------------
+  
+  
+  
+#------------------------------------LAB11 Task 1-----------------------------------
+def list_students(request):
+    students = student1.objects.all()
+    return render(request, 'bookmodules/list_students.html', {'students': students})
+
+def add_student(request):
+    if request.method == 'POST':
+        form = StudentForm1(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('list_students')
+    else:
+        form = StudentForm1()
+    return render(request, 'bookmodules/add_student.html', {'form': form})
+
+def edit_student(request, sID):
+    student = student1.objects.get( id=sID)
+    print(student)
+    if request.method == 'POST':
+        form = StudentForm1(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect('list_students')
+    else:
+        form = StudentForm1(instance=student)
+    return render(request, 'bookmodules/edit_student.html', {'form': form})
+
+def delete_student(request, sID):
+    student = student1.objects.get( id=sID)
+    student.delete()
+    return redirect('list_students')
+
+#------------------------------------LAB11 Task 2-----------------------------------
+
+def list_students2(request):
+    studentss = student2.objects.all()
+    return render(request, 'bookmodules/list_students2.html', {'studentss': studentss})
+
+def add_student2(request):
+    if request.method == 'POST':
+        form = StudentForm2(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('list_students2')
+    else:
+        form = StudentForm2()
+
+    return render(request, 'bookmodules/add_student2.html', {'form': form})
+
+def edit_student2(request, sID):
+    student = student2.objects.get( id=sID)
+    if request.method == 'POST':
+        form = StudentForm2(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect('list_students2')
+    else:
+        form = StudentForm2(instance=student)
+   # address = address2.objects.all().order_by('city')
+    return render(request, 'bookmodules/edit_student2.html', {'form': form})
+
+def delete_student2(request, sID):
+    student = student2.objects.get( id=sID)
+    student.delete()
+    return redirect('list_students2')
+#------------------------------------LAB11 Task 3-----------------------------------
+def register_page(request):
+    if request.method == 'POST':
+        form = registration1(request.POST, request.FILES) 
+        if form.is_valid():
+            form.save()
+            return render(request, 'bookmodules/index.html')
+    else:
+        form = registration1()
+
+    return render(request, 'bookmodules/register.html', {'form': form})
+
+            
+# def list_documents(request):
+#     documents = Document.objects.all()
+#     return render(request, 'bookmodules/list_documents.html', {'documents': documents})
+
+# def add_document(request):
+#     if request.method == 'POST':
+#         form = DocumentForm(request.POST, request.FILES) 
+#         if form.is_valid():
+#             form.save()
+#             return redirect('list_documents')  
+#     else:
+#         form = DocumentForm()
+#     return render(request, 'bookmodules/add_document.html', {'form': form})
+   
+        

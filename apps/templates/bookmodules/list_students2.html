@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book List</title>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #666;
+            padding: 10px;
+        }
+        th {
+            background-color:rgb(209, 158, 208);
+        }
+        .actions a {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>List of Books</h1>
+
+    <a href="{% url 'add_student2' %}">Add New Student</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>city</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in studentss %}
+                <tr>
+                    <td>{{ student.name }}</td>
+
+                    <td>{% for ad in student.address.all%}
+                            {{ad}}
+                            {%if not forloop.last%}, {% endif %}
+                        {%endfor%}</td>
+                    <td class="actions">
+                        <a href="{% url 'edit_student2' student.id %}">Edit</a>
+                        <a href="{% url 'delete_student2' student.id %}">Delete</a>
+                    </td>
+                </tr>
+            
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
