@@ -34,6 +34,8 @@ class CustomLoginView(LoginView):
         return reverse_lazy('list_students')
 
 
-def logout_view(request):
+def logoutUser(request):
     logout(request)
-    return redirect('usermodule/login')
+    return redirect('login')
+
+
