@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Book List</title>
+    <title>students List</title>
     <style>
         table {
             width: 80%;
@@ -22,11 +22,13 @@
     </style>
 </head>
 <body>
-    <h1>List of Books</h1>
+    <h1>students Lis</h1>
     {% if user.is_authenticated %}
 <a href="{% url 'add_student'%}">add student</a>
 {% else %}
-    <p>You need to be logged in to add or edit students.</p>
+<p>You need to be logged in to Add students</p>
+<br>
+<a href="{% url 'login' %}"> login here </a>
 {% endif %}
 
 {% if messages %}
@@ -54,7 +56,11 @@
                     {% if user.is_authenticated %}
                      <a href="{% url 'edit_student' student.id %}">edit</a> | <a href="{% url 'delete_student' student.id %}">delete</a>
                     {% else %}
-                     <p>You need to be logged in to edit students.</p>
+                    <p>You need to be logged in to edit or delete students</p>
+                    <br>
+                    <a href="{% url 'login' %}"> login here </a>
+
+                  
                     {% endif %}
                       
                     </td>

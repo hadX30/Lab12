@@ -275,7 +275,7 @@ def list_students(request):
     students = student1.objects.all()
     return render(request, 'bookmodules/list_students.html', {'students': students})
 
-@login_required(login_url='login')
+@login_required
 def add_student(request):
     if request.method == 'POST':
         form = StudentForm1(request.POST)
@@ -286,7 +286,7 @@ def add_student(request):
         form = StudentForm1()
     return render(request, 'bookmodules/add_student.html', {'form': form})
 
-@login_required(login_url='login')
+@login_required 
 def edit_student(request, sID):
     student = student1.objects.get( id=sID)
     print(student)
@@ -299,7 +299,7 @@ def edit_student(request, sID):
         form = StudentForm1(instance=student)
     return render(request, 'bookmodules/edit_student.html', {'form': form})
 
-@login_required(login_url='login')
+@login_required
 def delete_student(request, sID):
     student = student1.objects.get( id=sID)
     student.delete()
