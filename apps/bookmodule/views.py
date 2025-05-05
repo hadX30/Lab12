@@ -4,6 +4,7 @@ from .models import Book,department,card,course, product,company,student2,studen
 from django.db.models import Count, Min, Max, Sum, Avg , Q
 from django import forms
 from .forms import BookForm,StudentForm1,StudentForm2,registration1
+from django.contrib.auth.decorators import login_required
 import os
 from django.core.files.storage import FileSystemStorage
 #import BookForm
@@ -274,6 +275,7 @@ def list_students(request):
     students = student1.objects.all()
     return render(request, 'bookmodules/list_students.html', {'students': students})
 
+@login_required(login_url='login')
 def add_student(request):
     if request.method == 'POST':
         form = StudentForm1(request.POST)
@@ -284,6 +286,7 @@ def add_student(request):
         form = StudentForm1()
     return render(request, 'bookmodules/add_student.html', {'form': form})
 
+@login_required(login_url='login')
 def edit_student(request, sID):
     student = student1.objects.get( id=sID)
     print(student)
@@ -296,6 +299,7 @@ def edit_student(request, sID):
         form = StudentForm1(instance=student)
     return render(request, 'bookmodules/edit_student.html', {'form': form})
 
+@login_required(login_url='login')
 def delete_student(request, sID):
     student = student1.objects.get( id=sID)
     student.delete()
@@ -307,6 +311,7 @@ def list_students2(request):
     studentss = student2.objects.all()
     return render(request, 'bookmodules/list_students2.html', {'studentss': studentss})
 
+@login_required(login_url='login')
 def add_student2(request):
     if request.method == 'POST':
         form = StudentForm2(request.POST)
@@ -318,6 +323,7 @@ def add_student2(request):
 
     return render(request, 'bookmodules/add_student2.html', {'form': form})
 
+@login_required(login_url='login')
 def edit_student2(request, sID):
     student = student2.objects.get( id=sID)
     if request.method == 'POST':
@@ -329,7 +335,7 @@ def edit_student2(request, sID):
         form = StudentForm2(instance=student)
    # address = address2.objects.all().order_by('city')
     return render(request, 'bookmodules/edit_student2.html', {'form': form})
-
+@login_required(login_url='login')
 def delete_student2(request, sID):
     student = student2.objects.get( id=sID)
     student.delete()

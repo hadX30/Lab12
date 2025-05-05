@@ -23,8 +23,19 @@
 </head>
 <body>
     <h1>List of Books</h1>
+    {% if user.is_authenticated %}
+<a href="{% url 'add_student'%}">add student</a>
+{% else %}
+    <p>You need to be logged in to add or edit students.</p>
+{% endif %}
 
-    <a href="{% url 'add_student' %}">Add New Student</a>
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 
     <table>
         <thead>
@@ -40,12 +51,19 @@
                     <td>{{ student.name }}</td>
                     <td>{{ student.address.city }}</td>
                     <td class="actions">
-                        <a href="{% url 'edit_student' student.id %}">Edit</a>
-                        <a href="{% url 'delete_student' student.id %}">Delete</a>
+                    {% if user.is_authenticated %}
+                     <a href="{% url 'edit_student' student.id %}">edit</a> | <a href="{% url 'delete_student' student.id %}">delete</a>
+                    {% else %}
+                     <p>You need to be logged in to edit students.</p>
+                    {% endif %}
+                      
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+    {% if user.is_authenticated %}
+    <a href="{% url 'logout' %}">Logout</a>
+{% endif %}
 </body>
 </html>
